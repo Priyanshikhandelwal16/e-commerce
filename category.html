@@ -1,0 +1,486 @@
+﻿<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    
+    <!-- SEO Optimization -->
+    <title>Couture Catalog | Rang Mahal Jaipur</title>
+    <meta name="description" content="Browse our luxury hand-embroidered collection. Filter by fabric, craft technique, or occasion to find your perfect bespoke fit." />
+    <link rel="canonical" id="canonical-link" href="https://rangmahal.in/category.html" />    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Couture Catalog | Rang Mahal Jaipur" />
+    <meta property="og:description" content="Browse our luxury hand-embroidered collection. Filter by fabric, craft technique, or occasion to find your perfect bespoke fit." />
+    <meta property="og:image" content="assets/images/products/rani-crimson.jpg" />
+    <meta property="og:url" content="https://rangmahal.in/category.html" />
+
+    <!-- External Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+    <!-- Unified Global Styling -->
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
+    <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+    <link rel="manifest" href="site.webmanifest" />
+  </head>
+  <body>
+    <div id="cdot"></div>
+    <div id="cring"></div>
+    <div id="toast"></div>
+
+    <!-- ══ PRELOADER ══ -->
+    <div id="preloader">
+      <svg class="pl-motif" id="plm" viewBox="0 0 64 64" fill="none">
+        <path d="M32 4L60 32L32 60L4 32Z" stroke="#C4922A" stroke-width=".7" fill="none" />
+        <circle cx="32" cy="32" r="5" stroke="#C4922A" stroke-width=".6" fill="none" />
+      </svg>
+      <p class="pl-logo" id="pll">Rang Mahal</p>
+      <p class="pl-tagline" id="plt">Premium Ethnic Wear · Jaipur Since 1921</p>
+      <div class="pl-track"><div class="pl-fill" id="plf"></div></div>
+      <span class="pl-pct" id="plp">0%</span>
+    </div>
+
+    <!-- ══ NAV ══ -->
+    <header id="nav">
+      <div class="nav-inner">
+        <a class="nav-logo" href="index.html">
+          <span class="nav-logo-main">Rang Mahal</span>
+          <span class="nav-logo-sub">Luxury Ethnic · Jaipur · Est. 1921</span>
+        </a>
+        <button class="mobile-nav-toggle" aria-label="Toggle navigation">☰</button>
+        <nav>
+          <ul class="nav-links">
+            <li><a class="nav-link" href="index.html#hero">Home</a></li>
+            <li><a class="nav-link" href="index.html#why-rangmahal">Why Rangmahal</a></li>
+            <li><a class="nav-link" href="categories.html">Occasions</a></li>
+            <li><a class="nav-link" href="index.html#collection">Products</a></li>
+            <li><a class="nav-link" href="index.html#about">About Us</a></li>
+            <li><a class="nav-link" href="contact.html">Contact</a></li>
+          </ul>
+        </nav>
+        <div class="nav-right">
+          <button class="nav-btn" id="search-btn">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" style="margin-right: 2px;">
+              <circle cx="6" cy="6" r="4.5" stroke="currentColor" stroke-width="1.2" />
+              <path d="M9.5 9.5L13 13" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" />
+            </svg>
+            Search
+          </button>
+          <button class="nav-btn" id="open-cart-btn">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+              <path d="M1.5 3.5h11l-1.2 7H2.7z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round" />
+              <path d="M5 3.5V2.5a2 2 0 014 0v1" stroke="currentColor" stroke-width="1.2" />
+            </svg>
+            Bag <span class="cart-badge" id="cart-count">0</span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- ══ PAGE BANNER ══ -->
+    <section class="page-banner">
+      <p class="pb-tag" id="cat-banner-tag">Category Catalog</p>
+      <h1 class="pb-h1" id="cat-banner-title">Loading <em>Catalog</em></h1>
+      <div class="pb-breadcrumbs" id="cat-breadcrumbs">
+        <a href="index.html">Home</a><span>/</span><a href="categories.html">Occasions</a><span>/</span><span id="bc-current">Category</span>
+      </div>
+    </section>
+
+    <!-- ══ DYNAMIC CATALOG SECTION ══ -->
+    <section class="content-section">
+      <div class="content-wrap">
+        <div class="cat-layout-grid">
+          <!-- Sidebar Filters -->
+          <aside class="cat-sidebar">
+            <!-- Craft Filter Block -->
+            <div class="filter-block">
+              <h3 class="filter-title">Filter by Craft</h3>
+              <div class="filter-options" id="craft-filters">
+                <!-- Dynamically populated -->
+              </div>
+            </div>
+
+            <!-- Fabric Filter Block -->
+            <div class="filter-block">
+              <h3 class="filter-title">Filter by Fabric</h3>
+              <div class="filter-options" id="fabric-filters">
+                <!-- Dynamically populated -->
+              </div>
+            </div>
+
+            <!-- Action Block -->
+            <div class="filter-block" style="border-bottom: none;">
+              <button class="btn-outline" id="clear-filters-btn" style="width: 100%; font-size: 0.72rem; padding: 0.75rem 0; justify-content: center;">
+                Clear Filters
+              </button>
+            </div>
+          </aside>
+
+          <!-- Main Grid -->
+          <main class="cat-main">
+            <div class="cat-controls">
+              <span class="cat-results-count" id="results-count">Showing 0 products</span>
+              <div class="cat-sort-wrap">
+                <span class="cat-sort-label">Sort By:</span>
+                <select class="cat-sort-select" id="sort-select">
+                  <option value="default">Heritage (Featured)</option>
+                  <option value="price-asc">Price: Low to High</option>
+                  <option value="price-desc">Price: High to Low</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Product Cards Grid -->
+            <div class="cat-product-grid" id="category-product-grid">
+              <!-- Dynamically populated -->
+            </div>
+
+            <!-- Empty State -->
+            <div class="cat-no-products" id="empty-state" style="display: none;">
+              No heirloom designs match your filter criteria.
+            </div>
+          </main>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ FOOTER ══ -->
+    <footer>
+      <div class="ft" style="grid-template-columns: 1.5fr 1fr 1fr; gap: 4rem;">
+        <div class="ft-logo-area">
+          <p class="ft-brand">Rang Mahal</p>
+          <p class="ft-sub">Premium Ethnic Couture · Jaipur · Est. 1921</p>
+          <p class="ft-desc">
+            Born from the looms of Varanasi. Embroidered in Jaipur. Worn by those who carry their culture as an expression of self.
+          </p>
+          <div class="ft-social">
+            <a href="https://instagram.com/rangmahal" class="ft-social-link" target="_blank" rel="noopener" aria-label="Instagram">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            </a>
+            <a href="https://pinterest.com/rangmahal" class="ft-social-link" target="_blank" rel="noopener" aria-label="Pinterest">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.627 0-12 5.373-12 12 0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738.098.119.112.224.083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.632-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24 12 24c6.627 0 12-5.373 12-12 0-6.628-5.373-12-12-12z"/></svg>
+            </a>
+            <a href="https://facebook.com/rangmahal" class="ft-social-link" target="_blank" rel="noopener" aria-label="Facebook">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            </a>
+            <a href="https://wa.me/919812345678" class="ft-social-link" target="_blank" rel="noopener" aria-label="WhatsApp">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            </a>
+          </div>
+        </div>
+        <div>
+          <p class="ft-col-title">Collections</p>
+          <ul class="ft-list">
+            <li><a href="category.html?id=lehengas">Bridal Lehengas</a></li>
+            <li><a href="category.html?id=sherwanis">Groom Sherwanis</a></li>
+            <li><a href="category.html?id=sarees">Banarasi Sarees</a></li>
+            <li><a href="category.html?id=anarkalis">Anarkali Suits</a></li>
+            <li><a href="category.html?id=kurtas">Luxury Kurtas</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="ft-col-title">Visit Us</p>
+          <ul class="ft-list">
+            <li><a href="index.html#contact">Jaipur — Flagship</a></li>
+            <li><a href="index.html#contact">Mumbai — BKC Suite</a></li>
+            <li><a href="index.html#contact">Delhi — Hauz Khas Suite</a></li>
+            <li><a href="mailto:contact@rangmahal.in">contact@rangmahal.in</a></li>
+            <li><a href="tel:+919812345678">+91 98 1234 5678</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="fb">
+        <span>© 2026 Rang Mahal Heritage Pvt. Ltd. All rights reserved. Jaipur, Rajasthan.</span>
+        <div class="fb-legal">
+          <a href="privacy.html">Privacy Policy</a>
+          <a href="terms.html">Terms of Use</a>
+          <a href="return-policy.html">Return &amp; Alteration Policy</a>
+          <a href="shipping-policy.html">Shipping Policy</a>
+        </div>
+      </div>
+    </footer>
+
+    <!-- ══ CART DRAWER ══ -->
+    <div id="cart-backdrop"></div>
+    <div id="cart-drawer">
+      <div class="cd-head">
+        <h3 class="cd-title">Your Bag</h3>
+        <button class="cd-close" onclick="closeCart()">✕</button>
+      </div>
+      <div class="cd-items" id="cd-items">
+        <p style="font-size: 0.8rem; color: var(--muted); padding: 2rem 0; text-align: center;">Your bag is empty</p>
+      </div>
+      <div class="cd-foot">
+        <div class="cdf-total">
+          <div><div class="cdft-label">Total</div></div>
+          <span class="cdft-amt" id="cdft">₹0</span>
+        </div>
+        <button class="cd-checkout" onclick="triggerCheckout()">
+          Proceed to Checkout →
+        </button>
+        <p class="cd-emi">
+          Or pay in 3 instalments · <strong>Zero interest</strong>
+        </p>
+      </div>
+    </div>
+
+    <!-- ══ GLOBAL DATA & SCRIPTS ══ -->
+    <script src="js/db.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+      let filteredProducts = [];
+      let activeFilters = {
+        crafts: [],
+        fabrics: []
+      };
+      let currentSort = "default";
+      let baseFilterList = [];
+
+      window.addEventListener("DOMContentLoaded", () => {
+        const params = new URLSearchParams(window.location.search);
+        const catId = params.get("id");
+        const occasionParam = params.get("occasion");
+        const collectionParam = params.get("collection");
+
+        if (typeof PRODUCTS === "undefined") return;
+
+        // Determine list of products initially filtered by query
+        if (catId) {
+          const cat = getCategoryById(catId);
+          if (cat) {
+            document.title = `${cat.name} — Luxury Indian Couture | Rang Mahal`;
+            document.getElementById("cat-banner-tag").textContent = "Couture Collection";
+            document.getElementById("cat-banner-title").innerHTML = `${cat.name.split(" ")[0]} <em>${cat.name.split(" ").slice(1).join(" ")}</em>`;
+            document.getElementById("bc-current").textContent = cat.name;
+          }
+          baseFilterList = PRODUCTS.filter(p => p.category === catId);
+        } else if (occasionParam) {
+          document.title = `${occasionParam} Collection — Luxury Indian Couture | Rang Mahal`;
+          document.getElementById("cat-banner-tag").textContent = "Curated Occasion";
+          document.getElementById("cat-banner-title").innerHTML = `${occasionParam} <em>Couture</em>`;
+          document.getElementById("bc-current").textContent = occasionParam;
+          
+          // Case insensitive match for tags/crafts/descriptions
+          baseFilterList = PRODUCTS.filter(p => 
+            p.tag.toLowerCase().includes(occasionParam.toLowerCase()) ||
+            p.description.toLowerCase().includes(occasionParam.toLowerCase())
+          );
+        } else if (collectionParam) {
+          document.title = `${collectionParam} — Luxury Indian Couture | Rang Mahal`;
+          document.getElementById("cat-banner-tag").textContent = "Exquisite Series";
+          document.getElementById("cat-banner-title").innerHTML = `${collectionParam.split(" ")[0]} <em>${collectionParam.split(" ").slice(1).join(" ") || 'Collection'}</em>`;
+          document.getElementById("bc-current").textContent = collectionParam;
+          
+          baseFilterList = PRODUCTS.filter(p => p.tag === collectionParam);
+        } else {
+          // Default: all products
+          document.title = `Full Heirloom Catalog | Rang Mahal`;
+          document.getElementById("cat-banner-title").innerHTML = `All <em>Heirlooms</em>`;
+          document.getElementById("bc-current").textContent = "All Products";
+          baseFilterList = [...PRODUCTS];
+        }
+
+        // Set up canonical
+        const canonical = document.getElementById("canonical-link");
+        if (canonical) {
+          let canonicalUrl = `https://rangmahal.in/category.html`;
+          if (catId) canonicalUrl += `?id=${catId}`;
+          else if (occasionParam) canonicalUrl += `?occasion=${occasionParam}`;
+          else if (collectionParam) canonicalUrl += `?collection=${collectionParam}`;
+          canonical.href = canonicalUrl;
+        }
+
+        // Setup filter sidebars options based on active products to prevent dead option displays
+        setupSidebarFilters();
+
+        // Apply filters
+        applyFiltersAndSort();
+
+        // Bind Sort Change
+        document.getElementById("sort-select").addEventListener("change", (e) => {
+          currentSort = e.target.value;
+          applyFiltersAndSort();
+        });
+
+        // Bind Clear Filters
+        document.getElementById("clear-filters-btn").addEventListener("click", () => {
+          activeFilters.crafts = [];
+          activeFilters.fabrics = [];
+          document.querySelectorAll(".filter-checkbox").forEach(cb => cb.checked = false);
+          applyFiltersAndSort();
+        });
+      });
+
+      function setupSidebarFilters() {
+        const craftsDiv = document.getElementById("craft-filters");
+        const fabricsDiv = document.getElementById("fabric-filters");
+
+        // Parse unique crafts and fabrics
+        const uniqueCrafts = new Set();
+        const uniqueFabrics = new Set();
+
+        baseFilterList.forEach(p => {
+          // Craft extraction (splitting from "Jaipur · Zardozi · 840 hrs")
+          const parts = p.craft.split("·").map(s => s.trim());
+          if (parts.length > 1) {
+            uniqueCrafts.add(parts[1]);
+          }
+
+          // Fabric extraction (splitting comma or raw names, grouping into simple tokens)
+          const rawFabric = p.fabric.toLowerCase();
+          if (rawFabric.includes("silk")) uniqueFabrics.add("Silk");
+          else if (rawFabric.includes("velvet")) uniqueFabrics.add("Velvet");
+          else if (rawFabric.includes("linen")) uniqueFabrics.add("Linen");
+          else if (rawFabric.includes("cotton") || rawFabric.includes("mulmul")) uniqueFabrics.add("Cotton");
+          else if (rawFabric.includes("georgette")) uniqueFabrics.add("Georgette");
+          else if (rawFabric.includes("organza")) uniqueFabrics.add("Organza");
+          else uniqueFabrics.add("Other Weaves");
+        });
+
+        // Render Crafts checkboxes
+        craftsDiv.innerHTML = Array.from(uniqueCrafts).map(craft => `
+          <label class="filter-option">
+            <input type="checkbox" class="filter-checkbox" value="${craft}" data-type="craft" onchange="toggleFilter(this)" />
+            <span>${craft}</span>
+          </label>
+        `).join("");
+
+        // Render Fabrics checkboxes
+        fabricsDiv.innerHTML = Array.from(uniqueFabrics).map(fabric => `
+          <label class="filter-option">
+            <input type="checkbox" class="filter-checkbox" value="${fabric}" data-type="fabric" onchange="toggleFilter(this)" />
+            <span>${fabric}</span>
+          </label>
+        `).join("");
+      }
+
+      function toggleFilter(cb) {
+        const type = cb.dataset.type;
+        const val = cb.value;
+
+        if (type === "craft") {
+          if (cb.checked) activeFilters.crafts.push(val);
+          else activeFilters.crafts = activeFilters.crafts.filter(c => c !== val);
+        } else if (type === "fabric") {
+          if (cb.checked) activeFilters.fabrics.push(val);
+          else activeFilters.fabrics = activeFilters.fabrics.filter(f => f !== val);
+        }
+
+        applyFiltersAndSort();
+      }
+
+      function applyFiltersAndSort() {
+        // Filter
+        filteredProducts = baseFilterList.filter(p => {
+          // Craft filter check
+          if (activeFilters.crafts.length > 0) {
+            const parts = p.craft.split("·").map(s => s.trim());
+            const itemCraft = parts.length > 1 ? parts[1] : "";
+            if (!activeFilters.crafts.includes(itemCraft)) return false;
+          }
+
+          // Fabric filter check
+          if (activeFilters.fabrics.length > 0) {
+            const raw = p.fabric.toLowerCase();
+            let matchesFabric = false;
+            activeFilters.fabrics.forEach(f => {
+              if (f === "Silk" && raw.includes("silk")) matchesFabric = true;
+              if (f === "Velvet" && raw.includes("velvet")) matchesFabric = true;
+              if (f === "Linen" && raw.includes("linen")) matchesFabric = true;
+              if (f === "Cotton" && (raw.includes("cotton") || raw.includes("mulmul"))) matchesFabric = true;
+              if (f === "Georgette" && raw.includes("georgette")) matchesFabric = true;
+              if (f === "Organza" && raw.includes("organza")) matchesFabric = true;
+              if (f === "Other Weaves" && !raw.includes("silk") && !raw.includes("velvet") && !raw.includes("linen") && !raw.includes("cotton") && !raw.includes("mulmul") && !raw.includes("georgette") && !raw.includes("organza")) matchesFabric = true;
+            });
+            if (!matchesFabric) return false;
+          }
+
+          return true;
+        });
+
+        // Sort
+        if (currentSort === "price-asc") {
+          filteredProducts.sort((a, b) => a.price - b.price);
+        } else if (currentSort === "price-desc") {
+          filteredProducts.sort((a, b) => b.price - a.price);
+        }
+
+        // Draw results
+        drawProducts();
+      }
+
+      function drawProducts() {
+        const grid = document.getElementById("category-product-grid");
+        const emptyState = document.getElementById("empty-state");
+        const resultsText = document.getElementById("results-count");
+
+        resultsText.textContent = filteredProducts.length === 1 
+          ? "Showing 1 product"
+          : `Showing ${filteredProducts.length} products`;
+
+        if (filteredProducts.length === 0) {
+          grid.innerHTML = "";
+          emptyState.style.display = "block";
+          return;
+        }
+
+        emptyState.style.display = "none";
+        
+        grid.innerHTML = filteredProducts.map(p => {
+          let badgeHtml = "";
+          if (p.tag) {
+            let badgeClass = "";
+            let tagLower = p.tag.toLowerCase();
+            if (tagLower.includes("new")) {
+              badgeClass = "new";
+            } else if (tagLower.includes("bestseller") || tagLower.includes("exclusive") || tagLower.includes("trending") || tagLower.includes("royal") || tagLower.includes("classic") || tagLower.includes("heritage")) {
+              badgeClass = "bestseller";
+            } else if (tagLower.includes("sale")) {
+              badgeClass = "sale";
+            }
+            badgeHtml = `<span class="pc-badge ${badgeClass}">${p.tag}</span>`;
+          }
+
+          const priceFormatted = "₹" + p.price.toLocaleString("en-IN");
+          const priceHtml = p.oldPrice 
+            ? `<span class="pc-price"><del>₹${p.oldPrice.toLocaleString("en-IN")}</del>${priceFormatted}</span>`
+            : `<span class="pc-price">${priceFormatted}</span>`;
+
+          return `
+            <div class="pc">
+              <div class="pc-inner">
+                <div class="pc-img">
+                  <a href="product.html?id=${p.id}">
+                    <img src="${p.image}" alt="${p.name}" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1610189352649-ebe0c8cb3d39?w=320&h=420&fit=crop'" />
+                  </a>
+                  ${badgeHtml}
+                  <button class="pc-wishlist" aria-label="Wishlist">♡</button>
+                  <div class="pc-quick" onclick="addToCart('${p.id}', '${p.name.replace(/'/g, "\\'")}', ${p.price}, '${p.image}')">Add to Bag →</div>
+                </div>
+                <div class="pc-info">
+                  <p class="pc-cat">${p.categoryLabel}</p>
+                  <h3 class="pc-name"><a href="product.html?id=${p.id}">${p.name}</a></h3>
+                  <p class="pc-craft">${p.craft}</p>
+                  <div class="pc-foot">
+                    ${priceHtml}
+                    <button class="pc-cart" onclick="addToCart('${p.id}', '${p.name.replace(/'/g, "\\'")}', ${p.price}, '${p.image}')">Add to Bag</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          `;
+        }).join("");
+
+        if (window.initTilt) window.initTilt();
+        if (window.updateCursorHovers) window.updateCursorHovers();
+      }
+
+      window.toggleFilter = toggleFilter;
+    </script>
+  </body>
+</html>

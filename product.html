@@ -1,0 +1,715 @@
+﻿<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    
+    <!-- SEO Optimization -->
+    <title>Luxury Product Couture | Rang Mahal Jaipur</title>
+    <meta name="description" content="Explore custom ethnic designs at Rang Mahal. Review zardozi threads, raw silks, tailoring options, and private client commissions." />
+    <link rel="canonical" id="canonical-link" href="https://rangmahal.in/product.html" />    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Luxury Product Couture | Rang Mahal Jaipur" />
+    <meta property="og:description" content="Explore custom ethnic designs at Rang Mahal. Review zardozi threads, raw silks, tailoring options, and private client commissions." />
+    <meta property="og:image" content="assets/images/products/rani-crimson.jpg" />
+    <meta property="og:url" content="https://rangmahal.in/product.html" />
+
+    <!-- External Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+    <!-- Unified Global Styling -->
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
+    <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+    <link rel="manifest" href="site.webmanifest" />
+  </head>
+  <body>
+    <div id="cdot"></div>
+    <div id="cring"></div>
+    <div id="toast"></div>
+
+    <!-- ══ PRELOADER ══ -->
+    <div id="preloader">
+      <svg class="pl-motif" id="plm" viewBox="0 0 64 64" fill="none">
+        <path d="M32 4L60 32L32 60L4 32Z" stroke="#C4922A" stroke-width=".7" fill="none" />
+        <circle cx="32" cy="32" r="5" stroke="#C4922A" stroke-width=".6" fill="none" />
+      </svg>
+      <p class="pl-logo" id="pll">Rang Mahal</p>
+      <p class="pl-tagline" id="plt">Premium Ethnic Wear · Jaipur Since 1921</p>
+      <div class="pl-track"><div class="pl-fill" id="plf"></div></div>
+      <span class="pl-pct" id="plp">0%</span>
+    </div>
+
+    <!-- ══ NAV ══ -->
+    <header id="nav">
+      <div class="nav-inner">
+        <a class="nav-logo" href="index.html">
+          <span class="nav-logo-main">Rang Mahal</span>
+          <span class="nav-logo-sub">Luxury Ethnic · Jaipur · Est. 1921</span>
+        </a>
+        <button class="mobile-nav-toggle" aria-label="Toggle navigation">☰</button>
+        <nav>
+          <ul class="nav-links">
+            <li><a class="nav-link" href="index.html#hero">Home</a></li>
+            <li><a class="nav-link" href="index.html#why-rangmahal">Why Rangmahal</a></li>
+            <li><a class="nav-link" href="categories.html">Occasions</a></li>
+            <li><a class="nav-link" href="index.html#collection">Products</a></li>
+            <li><a class="nav-link" href="index.html#about">About Us</a></li>
+            <li><a class="nav-link" href="contact.html">Contact</a></li>
+          </ul>
+        </nav>
+        <div class="nav-right">
+          <button class="nav-btn" id="search-btn">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" style="margin-right: 2px;">
+              <circle cx="6" cy="6" r="4.5" stroke="currentColor" stroke-width="1.2" />
+              <path d="M9.5 9.5L13 13" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" />
+            </svg>
+            Search
+          </button>
+          <button class="nav-btn" id="open-cart-btn">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+              <path d="M1.5 3.5h11l-1.2 7H2.7z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round" />
+              <path d="M5 3.5V2.5a2 2 0 014 0v1" stroke="currentColor" stroke-width="1.2" />
+            </svg>
+            Bag <span class="cart-badge" id="cart-count">0</span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- ══ BREADCRUMBS ══ -->
+    <section class="page-banner" style="padding: 6.5rem 3.5rem 2rem; background: none; text-align: left;">
+      <div class="pb-breadcrumbs" style="margin-top: 0; color: var(--muted);">
+        <a href="index.html" style="color: var(--muted);">Home</a><span>/</span>
+        <a href="categories.html" style="color: var(--muted);">Occasions</a><span>/</span>
+        <a href="" id="bc-category" style="color: var(--muted);">Category</a><span>/</span>
+        <span id="bc-name" style="color: var(--maroon);">Product Name</span>
+      </div>
+    </section>
+
+    <!-- ══ MAIN PRODUCT GRID ══ -->
+    <section class="content-section" style="padding-top: 1rem;">
+      <div class="content-wrap">
+        <div class="product-detail-wrap">
+          <!-- Gallery -->
+          <div class="prod-gallery">
+            <div class="prod-thumbs" id="gallery-thumbs">
+              <!-- Dynamically populated thumbs -->
+            </div>
+            <div class="prod-main-img">
+              <img id="main-image" src="" alt="Product Showcase" />
+              <button class="main-gallery-arrow prev" aria-label="Previous image">‹</button>
+              <button class="main-gallery-arrow next" aria-label="Next image">›</button>
+              <div class="zoom-indicator">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="11" cy="11" r="8"></circle>
+                  <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                  <line x1="11" y1="8" x2="11" y2="14"></line>
+                  <line x1="8" y1="11" x2="14" y2="11"></line>
+                </svg>
+              </div>
+            </div>
+          </div>
+
+          <!-- Product Details Copy -->
+          <div class="prod-meta">
+            <span class="prod-cat-badge" id="prod-tag">Luxury Heirloom</span>
+            <h1 class="prod-h1" id="prod-name">Loading Design...</h1>
+            <p class="prod-craft-line" id="prod-craft">Origin · Technique · Hours</p>
+            
+            <div class="prod-price-box">
+              <span class="prod-main-price" id="prod-price">₹0</span>
+              <span class="prod-old-price" id="prod-old-price" style="display: none;">₹0</span>
+            </div>
+
+            <p class="prod-desc-snippet" id="prod-snippet">
+              Please wait while the garment design profiles load from the registry.
+            </p>
+
+            <div class="prod-key-features" id="key-features-list">
+              <!-- Features bullets -->
+            </div>
+
+            <div class="prod-actions-row">
+              <button class="btn-dark" id="add-to-bag-btn" style="padding: 1.1rem 2.8rem;">Add to Bag →</button>
+              <button class="btn-outline" onclick="scrollToInquiry()" style="padding: 1.1rem 2rem;">Inquire Custom Fitting</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- TABBED DETAILED SPECIFICATIONS -->
+        <div class="prod-tab-section">
+          <div class="prod-tabs">
+            <button class="prod-tab-btn active" onclick="switchTab(this, 'tab-craft')">The Piece &amp; Craft</button>
+            <button class="prod-tab-btn" onclick="switchTab(this, 'tab-specs')">Detailed Specifications</button>
+            <button class="prod-tab-btn" onclick="switchTab(this, 'tab-reviews')">Customer Reviews</button>
+          </div>
+
+          <div id="tab-craft" class="prod-tab-pane active">
+            <p class="tab-content-p" id="tab-long-desc">Long descriptions</p>
+          </div>
+
+          <div id="tab-specs" class="prod-tab-pane">
+            <table class="specs-table" id="specs-list">
+              <!-- Specs Key Value -->
+            </table>
+          </div>
+
+          <div id="tab-reviews" class="prod-tab-pane">
+            <div class="reviews-list" id="reviews-list">
+              <!-- Reviews List -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ INQUIRY & BOOKING FORM ══ -->
+    <section class="content-section white-bg" id="inquiry-section">
+      <div class="content-wrap" style="max-width: 800px;">
+        <div class="prod-inquiry-box">
+          <div class="pib-head">
+            <span class="pib-tag">Showroom Booking &amp; Sizing Request</span>
+            <h3 class="pib-title">Tailor this Piece to Your Measurements</h3>
+          </div>
+          <form class="inquiry-form" id="product-inquiry-form">
+            <!-- Hidden Fields for Product Mapping -->
+            <input type="hidden" name="productId" id="inq-prod-id" />
+            <input type="hidden" name="productName" id="inq-prod-name" />
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem;">
+              <div class="form-group">
+                <label class="form-label">Your Full Name</label>
+                <input type="text" name="name" class="form-input" required placeholder="e.g. Aditi Singhania" />
+              </div>
+              <div class="form-group">
+                <label class="form-label">Email Address</label>
+                <input type="email" name="email" class="form-input" required placeholder="e.g. aditi@gmail.com" />
+              </div>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem;">
+              <div class="form-group">
+                <label class="form-label">Phone Number</label>
+                <input type="tel" name="phone" class="form-input" required placeholder="e.g. +91 98765 43210" />
+              </div>
+              <div class="form-group">
+                <label class="form-label">Target Wedding / Celebration Date</label>
+                <input type="date" name="weddingDate" class="form-input" required />
+              </div>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem;">
+              <div class="form-group">
+                <label class="form-label">Custom height / Size requirement</label>
+                <select name="size" class="form-select">
+                  <option value="Standard - S">Standard - Small (Waist 28)</option>
+                  <option value="Standard - M">Standard - Medium (Waist 30)</option>
+                  <option value="Standard - L">Standard - Large (Waist 32)</option>
+                  <option value="Bespoke - Tailor Session Required">Bespoke Fitting (Private Showroom Fitting)</option>
+                  <option value="Remote Consultation">Remote Fitting (Video Measurement Consultation)</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Preferred Showroom Location</label>
+                <select name="showroom" class="form-select">
+                  <option value="Jaipur - Flagship">Jaipur Flagship Showroom</option>
+                  <option value="Mumbai - Bandra">Mumbai Styling Suite</option>
+                  <option value="Delhi - Hauz Khas">Delhi Styling Suite</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Alteration Notes &amp; Styling Requirements</label>
+              <textarea name="notes" class="form-textarea" placeholder="Include any details about sleeve lengths, color adjustments, custom embroidery text (e.g. wedding date on border), or private viewing requests..."></textarea>
+            </div>
+
+            <button type="submit" class="btn-dark" style="width: 100%; justify-content: center; padding: 1rem 0; margin-top: 1rem;">
+              Submit Inquiry &amp; Request Sizing →
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ RELATED PRODUCTS ══ -->
+    <section class="content-section" style="border-top: 1px solid var(--border);">
+      <div class="content-wrap">
+        <div class="sec-head">
+          <p class="sec-tag">Complete the Wardrobe</p>
+          <h2 class="sec-h2">Related <em>Couture</em> Pieces</h2>
+        </div>
+        <div class="product-grid" id="related-grid">
+          <!-- Dynamically loaded related cards -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ FOOTER ══ -->
+    <footer>
+      <div class="ft" style="grid-template-columns: 1.5fr 1fr 1fr; gap: 4rem;">
+        <div class="ft-logo-area">
+          <p class="ft-brand">Rang Mahal</p>
+          <p class="ft-sub">Premium Ethnic Couture · Jaipur · Est. 1921</p>
+          <p class="ft-desc">
+            Born from the looms of Varanasi. Embroidered in Jaipur. Worn by those who carry their culture as an expression of self.
+          </p>
+          <div class="ft-social">
+            <a href="https://instagram.com/rangmahal" class="ft-social-link" target="_blank" rel="noopener" aria-label="Instagram">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            </a>
+            <a href="https://pinterest.com/rangmahal" class="ft-social-link" target="_blank" rel="noopener" aria-label="Pinterest">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.627 0-12 5.373-12 12 0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738.098.119.112.224.083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.632-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24 12 24c6.627 0 12-5.373 12-12 0-6.628-5.373-12-12-12z"/></svg>
+            </a>
+            <a href="https://facebook.com/rangmahal" class="ft-social-link" target="_blank" rel="noopener" aria-label="Facebook">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            </a>
+            <a href="https://wa.me/919812345678" class="ft-social-link" target="_blank" rel="noopener" aria-label="WhatsApp">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            </a>
+          </div>
+        </div>
+        <div>
+          <p class="ft-col-title">Collections</p>
+          <ul class="ft-list">
+            <li><a href="category.html?id=lehengas">Bridal Lehengas</a></li>
+            <li><a href="category.html?id=sherwanis">Groom Sherwanis</a></li>
+            <li><a href="category.html?id=sarees">Banarasi Sarees</a></li>
+            <li><a href="category.html?id=anarkalis">Anarkali Suits</a></li>
+            <li><a href="category.html?id=kurtas">Luxury Kurtas</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="ft-col-title">Visit Us</p>
+          <ul class="ft-list">
+            <li><a href="index.html#contact">Jaipur — Flagship</a></li>
+            <li><a href="index.html#contact">Mumbai — BKC Suite</a></li>
+            <li><a href="index.html#contact">Delhi — Hauz Khas Suite</a></li>
+            <li><a href="mailto:contact@rangmahal.in">contact@rangmahal.in</a></li>
+            <li><a href="tel:+919812345678">+91 98 1234 5678</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="fb">
+        <span>© 2026 Rang Mahal Heritage Pvt. Ltd. All rights reserved. Jaipur, Rajasthan.</span>
+        <div class="fb-legal">
+          <a href="privacy.html">Privacy Policy</a>
+          <a href="terms.html">Terms of Use</a>
+          <a href="return-policy.html">Return &amp; Alteration Policy</a>
+          <a href="shipping-policy.html">Shipping Policy</a>
+        </div>
+      </div>
+    </footer>
+
+    <!-- ══ CART DRAWER ══ -->
+    <div id="cart-backdrop"></div>
+    <div id="cart-drawer">
+      <div class="cd-head">
+        <h3 class="cd-title">Your Bag</h3>
+        <button class="cd-close" onclick="closeCart()">✕</button>
+      </div>
+      <div class="cd-items" id="cd-items">
+        <p style="font-size: 0.8rem; color: var(--muted); padding: 2rem 0; text-align: center;">Your bag is empty</p>
+      </div>
+      <div class="cd-foot">
+        <div class="cdf-total">
+          <div><div class="cdft-label">Total</div></div>
+          <span class="cdft-amt" id="cdft">₹0</span>
+        </div>
+        <button class="cd-checkout" onclick="triggerCheckout()">
+          Proceed to Checkout →
+        </button>
+        <p class="cd-emi">
+          Or pay in 3 instalments · <strong>Zero interest</strong>
+        </p>
+      </div>
+    </div>
+
+    <!-- ══ LIGHTBOX OVERLAY ══ -->
+    <div id="gallery-lightbox" class="lightbox">
+      <button class="lightbox-close" aria-label="Close gallery">✕</button>
+      <button class="lightbox-arrow prev" aria-label="Previous image">‹</button>
+      <div class="lightbox-content">
+        <img id="lightbox-image" src="" alt="Zoomed view" />
+      </div>
+      <button class="lightbox-arrow next" aria-label="Next image">›</button>
+      <div class="lightbox-thumbs" id="lightbox-thumbs"></div>
+    </div>
+
+    <!-- ══ GLOBAL DATA & SCRIPTS ══ -->
+    <script src="js/db.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+      let currentProduct = null;
+
+      window.addEventListener("DOMContentLoaded", () => {
+        const params = new URLSearchParams(window.location.search);
+        const prodId = params.get("id") || "rani";
+
+        if (typeof PRODUCTS === "undefined") return;
+        currentProduct = getProductById(prodId);
+
+        if (!currentProduct) {
+          window.location.href = "categories.html";
+          return;
+        }
+
+        // Draw Meta & Headings
+        document.title = `${currentProduct.name} — Luxury Ethnic couture | Rang Mahal`;
+        const canonicalTag = document.getElementById("canonical-link");
+        if (canonicalTag) {
+          canonicalTag.href = `https://rangmahal.in/product.html?id=${currentProduct.id}`;
+        }
+        document.getElementById("prod-name").textContent = currentProduct.name;
+        document.getElementById("prod-tag").textContent = currentProduct.tag || "Handcrafted Luxury";
+        document.getElementById("prod-craft").textContent = currentProduct.craft;
+        document.getElementById("prod-price").textContent = "₹" + currentProduct.price.toLocaleString("en-IN");
+        document.getElementById("prod-snippet").textContent = currentProduct.description.split(".").slice(0, 2).join(".") + ".";
+        document.getElementById("tab-long-desc").textContent = currentProduct.description;
+
+        // Hidden input fields for inquiry
+        document.getElementById("inq-prod-id").value = currentProduct.id;
+        document.getElementById("inq-prod-name").value = currentProduct.name;
+
+        // Old price conditional
+        if (currentProduct.oldPrice) {
+          const oldSpan = document.getElementById("prod-old-price");
+          oldSpan.textContent = "₹" + currentProduct.oldPrice.toLocaleString("en-IN");
+          oldSpan.style.display = "inline";
+        }
+
+        // Breadcrumbs links
+        const catObj = getCategoryById(currentProduct.category);
+        if (catObj) {
+          const bcCat = document.getElementById("bc-category");
+          bcCat.href = `category.html?id=${catObj.id}`;
+          bcCat.textContent = catObj.name;
+        }
+        document.getElementById("bc-name").textContent = currentProduct.name;
+
+        // Draw Gallery images
+        const mainImg = document.getElementById("main-image");
+        mainImg.src = currentProduct.image;
+        mainImg.alt = currentProduct.name;
+
+        const thumbsDiv = document.getElementById("gallery-thumbs");
+        const galleryFiles = currentProduct.gallery || [currentProduct.image];
+        window.galleryFiles = galleryFiles; // Expose globally for lightbox
+        thumbsDiv.innerHTML = galleryFiles.map((img, i) => `
+          <div class="prod-thumb ${i === 0 ? 'active' : ''}" onclick="switchGalleryImage(this, '${img}', ${i})">
+            <img src="${img}" alt="${currentProduct.name} detail view" onerror="this.src='https://images.unsplash.com/photo-1610189352649-ebe0c8cb3d39?w=80&h=110&fit=crop'"/>
+          </div>
+        `).join("");
+
+        // Key features bullet grid
+        const featuresDiv = document.getElementById("key-features-list");
+        const feats = currentProduct.features || ["Hand-embroidered wire", "Tailored fit session included", "Muslin preservation packaging"];
+        featuresDiv.innerHTML = feats.map(f => `<div class="pkf-item">${f}</div>`).join("");
+
+        // Cart button handler
+        const bagBtn = document.getElementById("add-to-bag-btn");
+        bagBtn.addEventListener("click", () => {
+          addToCart(currentProduct.id, currentProduct.name, currentProduct.price, currentProduct.image);
+        });
+
+        // Tab specifications
+        const specsTable = document.getElementById("specs-list");
+        const specs = currentProduct.specs || {};
+        specsTable.innerHTML = Object.keys(specs).map(k => `
+          <tr>
+            <td class="label-td">${k}</td>
+            <td class="value-td">${specs[k]}</td>
+          </tr>
+        `).join("");
+
+        // Tab reviews
+        const reviewsDiv = document.getElementById("reviews-list");
+        const reviews = currentProduct.reviews || [
+          { author: "Heritage Patron", rating: 5, date: "2024", city: "Jaipur", comment: "Beautiful handwork and unmatched fabric feel." }
+        ];
+        reviewsDiv.innerHTML = reviews.map(r => `
+          <div class="rev-item">
+            <div class="rev-meta">
+              <div class="rev-author-details">
+                <span class="rev-author">${r.author}</span>
+                <span class="rev-location">Verified Client · ${r.city} · ${r.date}</span>
+              </div>
+              <div class="rev-rating">${"★".repeat(r.rating)}${"☆".repeat(5 - r.rating)}</div>
+            </div>
+            <p class="rev-text">"${r.comment}"</p>
+          </div>
+        `).join("");
+
+        // Related items
+        drawRelatedProducts();
+      });
+
+      let currentImageIndex = 0;
+
+      function switchGalleryImage(thumb, url, index) {
+        document.querySelectorAll(".prod-thumb").forEach(t => t.classList.remove("active"));
+        if (thumb) {
+          thumb.classList.add("active");
+        } else {
+          const thumbs = document.querySelectorAll(".prod-thumb");
+          if (thumbs[index]) thumbs[index].classList.add("active");
+        }
+        currentImageIndex = index;
+        
+        const main = document.getElementById("main-image");
+        if (window.gsap) {
+          gsap.to(main, {
+            opacity: 0.15,
+            duration: 0.15,
+            onComplete: () => {
+              main.src = url;
+              gsap.to(main, { opacity: 1, duration: 0.25 });
+            }
+          });
+        } else {
+          main.src = url;
+        }
+      }
+
+      // Hover Zoom Integration
+      const mainImgContainer = document.querySelector(".prod-main-img");
+      const mainImg = document.getElementById("main-image");
+
+      if (mainImgContainer && mainImg) {
+        mainImgContainer.addEventListener("mouseenter", () => {
+          mainImg.style.transform = "scale(1.75)";
+        });
+
+        mainImgContainer.addEventListener("mousemove", (e) => {
+          const rect = mainImgContainer.getBoundingClientRect();
+          const x = ((e.clientX - rect.left) / rect.width) * 100;
+          const y = ((e.clientY - rect.top) / rect.height) * 100;
+          mainImg.style.transformOrigin = `${x}% ${y}%`;
+        });
+
+        mainImgContainer.addEventListener("mouseleave", () => {
+          mainImg.style.transform = "scale(1.0)";
+          mainImg.style.transformOrigin = "center top";
+        });
+
+        // Lightbox Open Trigger on Main Image Click (except arrows)
+        mainImgContainer.addEventListener("click", (e) => {
+          if (!e.target.classList.contains("main-gallery-arrow")) {
+            openLightbox(currentImageIndex);
+          }
+        });
+
+        // Arrow Navigation on Main Showcase
+        const prevArrow = document.querySelector(".main-gallery-arrow.prev");
+        const nextArrow = document.querySelector(".main-gallery-arrow.next");
+
+        if (prevArrow) {
+          prevArrow.addEventListener("click", (e) => {
+            e.stopPropagation();
+            const files = window.galleryFiles || [];
+            if (!files.length) return;
+            let prevIdx = currentImageIndex - 1;
+            if (prevIdx < 0) prevIdx = files.length - 1;
+            switchGalleryImage(null, files[prevIdx], prevIdx);
+          });
+        }
+
+        if (nextArrow) {
+          nextArrow.addEventListener("click", (e) => {
+            e.stopPropagation();
+            const files = window.galleryFiles || [];
+            if (!files.length) return;
+            let nextIdx = currentImageIndex + 1;
+            if (nextIdx >= files.length) nextIdx = 0;
+            switchGalleryImage(null, files[nextIdx], nextIdx);
+          });
+        }
+
+        // Swipe Gestures on Main Image Container
+        let mainTouchStartX = 0;
+        let mainTouchEndX = 0;
+        mainImgContainer.addEventListener("touchstart", (e) => {
+          mainTouchStartX = e.changedTouches[0].screenX;
+        }, { passive: true });
+
+        mainImgContainer.addEventListener("touchend", (e) => {
+          mainTouchEndX = e.changedTouches[0].screenX;
+          const threshold = 50;
+          const files = window.galleryFiles || [];
+          if (!files.length) return;
+          if (mainTouchEndX < mainTouchStartX - threshold) {
+            // Swipe Left -> Next Image
+            let nextIdx = currentImageIndex + 1;
+            if (nextIdx >= files.length) nextIdx = 0;
+            switchGalleryImage(null, files[nextIdx], nextIdx);
+          } else if (mainTouchEndX > mainTouchStartX + threshold) {
+            // Swipe Right -> Prev Image
+            let prevIdx = currentImageIndex - 1;
+            if (prevIdx < 0) prevIdx = files.length - 1;
+            switchGalleryImage(null, files[prevIdx], prevIdx);
+          }
+        }, { passive: true });
+      }
+
+      // Lightbox Functions
+      function openLightbox(index) {
+        const lightbox = document.getElementById("gallery-lightbox");
+        const lightboxImg = document.getElementById("lightbox-image");
+        const lightboxThumbs = document.getElementById("lightbox-thumbs");
+        const files = window.galleryFiles || [mainImg.src];
+
+        if (!lightbox || !lightboxImg) return;
+
+        currentImageIndex = index;
+        lightboxImg.src = files[currentImageIndex];
+        lightbox.classList.add("active");
+        document.body.style.overflow = "hidden";
+
+        if (lightboxThumbs) {
+          lightboxThumbs.innerHTML = files.map((img, i) => `
+            <div class="lightbox-thumb ${i === currentImageIndex ? 'active' : ''}" onclick="switchLightboxImage(${i})">
+              <img src="${img}" alt="${currentProduct ? currentProduct.name : 'Product'} thumbnail ${i + 1}" />
+            </div>
+          `).join("");
+        }
+      }
+
+      function closeLightbox() {
+        const lightbox = document.getElementById("gallery-lightbox");
+        if (lightbox) lightbox.classList.remove("active");
+        document.body.style.overflow = "";
+      }
+
+      function switchLightboxImage(index) {
+        currentImageIndex = index;
+        const lightboxImg = document.getElementById("lightbox-image");
+        const files = window.galleryFiles || [];
+        if (lightboxImg && files[currentImageIndex]) {
+          lightboxImg.src = files[currentImageIndex];
+        }
+        
+        document.querySelectorAll(".lightbox-thumb").forEach((t, idx) => {
+          t.classList.toggle("active", idx === currentImageIndex);
+        });
+      }
+
+      function nextLightboxImage() {
+        const files = window.galleryFiles || [];
+        if (!files.length) return;
+        let nextIdx = currentImageIndex + 1;
+        if (nextIdx >= files.length) nextIdx = 0;
+        switchLightboxImage(nextIdx);
+      }
+
+      function prevLightboxImage() {
+        const files = window.galleryFiles || [];
+        if (!files.length) return;
+        let prevIdx = currentImageIndex - 1;
+        if (prevIdx < 0) prevIdx = files.length - 1;
+        switchLightboxImage(prevIdx);
+      }
+
+      // Lightbox Event Listeners
+      document.addEventListener("DOMContentLoaded", () => {
+        const closeBtn = document.querySelector(".lightbox-close");
+        const prevBtn = document.querySelector(".lightbox-arrow.prev");
+        const nextBtn = document.querySelector(".lightbox-arrow.next");
+        const lightbox = document.getElementById("gallery-lightbox");
+
+        if (closeBtn) closeBtn.addEventListener("click", closeLightbox);
+        if (prevBtn) prevBtn.addEventListener("click", prevLightboxImage);
+        if (nextBtn) nextBtn.addEventListener("click", nextLightboxImage);
+        if (lightbox) {
+          lightbox.addEventListener("click", (e) => {
+            if (e.target.id === "gallery-lightbox") closeLightbox();
+          });
+        }
+
+        // Lightbox Swipe Gestures
+        let touchStartX = 0;
+        let touchEndX = 0;
+        const lightboxContent = document.querySelector(".lightbox-content");
+        if (lightboxContent) {
+          lightboxContent.addEventListener("touchstart", (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+          }, { passive: true });
+
+          lightboxContent.addEventListener("touchend", (e) => {
+            touchEndX = e.changedTouches[0].screenX;
+            const threshold = 50;
+            if (touchEndX < touchStartX - threshold) {
+              nextLightboxImage();
+            } else if (touchEndX > touchStartX + threshold) {
+              prevLightboxImage();
+            }
+          }, { passive: true });
+        }
+      });
+
+      // Keyboard Controls
+      document.addEventListener("keydown", (e) => {
+        const lightbox = document.getElementById("gallery-lightbox");
+        if (lightbox && lightbox.classList.contains("active")) {
+          if (e.key === "Escape") closeLightbox();
+          else if (e.key === "ArrowRight") nextLightboxImage();
+          else if (e.key === "ArrowLeft") prevLightboxImage();
+        }
+      });
+
+      function switchTab(btn, paneId) {
+        document.querySelectorAll(".prod-tab-btn").forEach(b => b.classList.remove("active"));
+        document.querySelectorAll(".prod-tab-pane").forEach(p => p.classList.remove("active"));
+        
+        btn.classList.add("active");
+        document.getElementById(paneId).classList.add("active");
+      }
+
+      function scrollToInquiry() {
+        document.getElementById("inquiry-section").scrollIntoView({ behavior: "smooth" });
+      }
+
+      function drawRelatedProducts() {
+        const grid = document.getElementById("related-grid");
+        if (!grid || !currentProduct) return;
+
+        const related = PRODUCTS.filter(p => p.category === currentProduct.category && p.id !== currentProduct.id).slice(0, 4);
+
+        if (related.length === 0) {
+          grid.parentElement.style.display = "none";
+          return;
+        }
+
+        grid.innerHTML = related.map(p => `
+          <div class="pc">
+            <div class="pc-inner">
+              <div class="pc-img">
+                <a href="product.html?id=${p.id}">
+                  <img src="${p.image}" alt="${p.name}" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1610189352649-ebe0c8cb3d39?w=320&h=420&fit=crop'"/>
+                </a>
+                <button class="pc-wishlist" aria-label="Wishlist">♡</button>
+                <div class="pc-quick" onclick="addToCart('${p.id}', '${p.name}', ${p.price}, '${p.image}')">Add to Bag →</div>
+              </div>
+              <div class="pc-info">
+                <p class="pc-cat">${p.categoryLabel}</p>
+                <h3 class="pc-name"><a href="product.html?id=${p.id}">${p.name}</a></h3>
+                <p class="pc-craft">${p.craft}</p>
+                <div class="pc-foot">
+                  <span class="pc-price">₹${p.price.toLocaleString("en-IN")}</span>
+                  <button class="pc-cart" onclick="addToCart('${p.id}', '${p.name}', ${p.price}, '${p.image}')">Add to Bag</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        `).join("");
+
+        if (window.initTilt) window.initTilt();
+        if (window.updateCursorHovers) window.updateCursorHovers();
+      }
+    </script>
+  </body>
+</html>

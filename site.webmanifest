@@ -1,0 +1,26 @@
+{
+  "name": "Rang Mahal - Premium Indian Couture",
+  "short_name": "Rang Mahal",
+  "description": "Jaipur's premier luxury ethnic wear showroom. Hand-embroidered lehengas, sherwanis, and sarees.",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "background_color": "#fbf6ee",
+  "theme_color": "#6b1e2e",
+  "icons": [
+    {
+      "src": "favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "favicon-192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "favicon-512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ]
+}
