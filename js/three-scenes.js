@@ -12,11 +12,16 @@ function observeScene(sectionId, canvasId, fn) {
   const obs = new IntersectionObserver(
     (entries) => {
       const isIntersecting = entries[0].isIntersecting;
+      const wasVisible = canvas.dataset.visible === "true";
       canvas.dataset.visible = isIntersecting ? "true" : "false";
       
-      if (isIntersecting && !initialized) {
-        initialized = true;
-        fn();
+      if (isIntersecting) {
+        if (!initialized) {
+          initialized = true;
+          fn();
+        } else if (!wasVisible && typeof canvas.resumeRender === "function") {
+          canvas.resumeRender();
+        }
       }
     },
     { threshold: 0.01 }
@@ -80,16 +85,7 @@ function initGSAP() {
   });
   gsap.to("#shi", { opacity: 1, duration: 0.5, delay: 1.2 });
 
-  // Nav Scroll Behavior
-  ScrollTrigger.create({
-    start: "80px top",
-    onUpdate: (self) => {
-      const nav = document.getElementById("nav");
-      if (nav) {
-        nav.classList.toggle("scrolled", self.scroll() > 80);
-      }
-    },
-  });
+  // Nav Scroll Behavior managed passively in main.js to avoid ScrollTrigger conflicts
 
   // ── Robust Section Reveals via IntersectionObserver ──
   // Elements below the fold get animated in; elements already in view stay visible
@@ -358,15 +354,25 @@ function initVisit() {
   });
   
   let angle = 0;
-  (function loop() {
-    requestAnimationFrame(loop);
-    if (canvas.dataset.visible !== "true") return;
+  let animId = null;
+  function loop() {
+    if (canvas.dataset.visible !== "true") {
+      animId = null;
+      return;
+    }
     angle += 0.008;
     c.position.x = Math.sin(angle) * 0.7;
     c.position.z = Math.cos(angle) * 1.2 + 9;
     c.lookAt(0, 0.3, 0);
     r.render(s, c);
-  })();
+    animId = requestAnimationFrame(loop);
+  }
+
+  canvas.resumeRender = () => {
+    if (!animId) loop();
+  };
+
+  loop();
 }
 
 /* ════════════════════════════════
@@ -503,9 +509,12 @@ function initCategoriesBackdrop() {
   const targetColMen = new THREE.Color(0x1c4a33);
   let activeColor = new THREE.Color().copy(targetColWomen);
 
-  (function animate() {
-    requestAnimationFrame(animate);
-    if (canvas.dataset.visible !== "true") return;
+  let animId = null;
+  function animate() {
+    if (canvas.dataset.visible !== "true") {
+      animId = null;
+      return;
+    }
     t += 0.01;
 
     // Slowly rotate points
@@ -553,6 +562,13 @@ function initCategoriesBackdrop() {
     geometry.attributes.color.needsUpdate = true;
 
     r.render(s, c);
-  })();
+    animId = requestAnimationFrame(animate);
+  }
+
+  canvas.resumeRender = () => {
+    if (!animId) animate();
+  };
+
+  animate();
 }
 window.initCategoriesBackdrop = initCategoriesBackdrop;
