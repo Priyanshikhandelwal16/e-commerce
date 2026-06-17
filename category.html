@@ -16,8 +16,7 @@
     <meta property="og:url" content="https://rangmahal.in/category.html" />
 
     <!-- External Libraries -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 
     <!-- Unified Global Styling -->
@@ -40,7 +39,7 @@
         <circle cx="32" cy="32" r="5" stroke="#C4922A" stroke-width=".6" fill="none" />
       </svg>
       <p class="pl-logo" id="pll">Rang Mahal</p>
-      <p class="pl-tagline" id="plt">Premium Ethnic Wear · Jaipur Since 1921</p>
+      <p class="pl-tagline" id="plt">Premium Ethnic Wear &middot; Jaipur Since 1921</p>
       <div class="pl-track"><div class="pl-fill" id="plf"></div></div>
       <span class="pl-pct" id="plp">0%</span>
     </div>
@@ -50,9 +49,9 @@
       <div class="nav-inner">
         <a class="nav-logo" href="index.html">
           <span class="nav-logo-main">Rang Mahal</span>
-          <span class="nav-logo-sub">Luxury Ethnic · Jaipur · Est. 1921</span>
+          <span class="nav-logo-sub">Luxury Ethnic &middot; Jaipur &middot; Est. 1921</span>
         </a>
-        <button class="mobile-nav-toggle" aria-label="Toggle navigation">?</button>
+        <button class="mobile-nav-toggle" aria-label="Toggle navigation">&#9776;</button>
         <nav>
           <ul class="nav-links">
             <li><a class="nav-link" href="index.html#hero">Home</a></li>
@@ -154,7 +153,7 @@
       <div class="ft" style="grid-template-columns: 1.5fr 1fr 1fr; gap: 4rem;">
         <div class="ft-logo-area">
           <p class="ft-brand">Rang Mahal</p>
-          <p class="ft-sub">Premium Ethnic Couture · Jaipur · Est. 1921</p>
+          <p class="ft-sub">Premium Ethnic Couture &middot; Jaipur &middot; Est. 1921</p>
           <p class="ft-desc">
             Born from the looms of Varanasi. Embroidered in Jaipur. Worn by those who carry their culture as an expression of self.
           </p>
@@ -186,16 +185,16 @@
         <div>
           <p class="ft-col-title">Visit Us</p>
           <ul class="ft-list">
-            <li><a href="index.html#contact">Jaipur — Flagship</a></li>
-            <li><a href="index.html#contact">Mumbai — BKC Suite</a></li>
-            <li><a href="index.html#contact">Delhi — Hauz Khas Suite</a></li>
+            <li><a href="index.html#contact">Jaipur &middot; Flagship</a></li>
+            <li><a href="index.html#contact">Mumbai &middot; BKC Suite</a></li>
+            <li><a href="index.html#contact">Delhi &middot; Hauz Khas Suite</a></li>
             <li><a href="mailto:contact@rangmahal.in">contact@rangmahal.in</a></li>
             <li><a href="tel:+919812345678">+91 98 1234 5678</a></li>
           </ul>
         </div>
       </div>
       <div class="fb">
-        <span>© 2026 Rang Mahal Heritage Pvt. Ltd. All rights reserved. Jaipur, Rajasthan.</span>
+        <span>&copy; 2026 Rang Mahal Heritage Pvt. Ltd. All rights reserved. Jaipur, Rajasthan.</span>
         <div class="fb-legal">
           <a href="privacy.html">Privacy Policy</a>
           <a href="terms.html">Terms of Use</a>
@@ -210,7 +209,7 @@
     <div id="cart-drawer">
       <div class="cd-head">
         <h3 class="cd-title">Your Bag</h3>
-        <button class="cd-close" onclick="closeCart()">?</button>
+        <button class="cd-close" onclick="closeCart()">&times;</button>
       </div>
       <div class="cd-items" id="cd-items">
         <p style="font-size: 0.8rem; color: var(--muted); padding: 2rem 0; text-align: center;">Your bag is empty</p>
@@ -218,13 +217,13 @@
       <div class="cd-foot">
         <div class="cdf-total">
           <div><div class="cdft-label">Total</div></div>
-          <span class="cdft-amt" id="cdft">?0</span>
+          <span class="cdft-amt" id="cdft">&#8377;0</span>
         </div>
         <button class="cd-checkout" onclick="triggerCheckout()">
-          Proceed to Checkout ?
+          Proceed to Checkout &rarr;
         </button>
         <p class="cd-emi">
-          Or pay in 3 instalments · <strong>Zero interest</strong>
+          Or pay in 3 instalments &middot; <strong>Zero interest</strong>
         </p>
       </div>
     </div>
@@ -253,14 +252,14 @@
         if (catId) {
           const cat = getCategoryById(catId);
           if (cat) {
-            document.title = `${cat.name} — Luxury Indian Couture | Rang Mahal`;
+            document.title = `${cat.name} \u00B7 Luxury Indian Couture | Rang Mahal`;
             document.getElementById("cat-banner-tag").textContent = "Couture Collection";
             document.getElementById("cat-banner-title").innerHTML = `${cat.name.split(" ")[0]} <em>${cat.name.split(" ").slice(1).join(" ")}</em>`;
             document.getElementById("bc-current").textContent = cat.name;
           }
           baseFilterList = PRODUCTS.filter(p => p.category === catId);
         } else if (occasionParam) {
-          document.title = `${occasionParam} Collection — Luxury Indian Couture | Rang Mahal`;
+          document.title = `${occasionParam} Collection \u00B7 Luxury Indian Couture | Rang Mahal`;
           document.getElementById("cat-banner-tag").textContent = "Curated Occasion";
           document.getElementById("cat-banner-title").innerHTML = `${occasionParam} <em>Couture</em>`;
           document.getElementById("bc-current").textContent = occasionParam;
@@ -271,7 +270,7 @@
             p.description.toLowerCase().includes(occasionParam.toLowerCase())
           );
         } else if (collectionParam) {
-          document.title = `${collectionParam} — Luxury Indian Couture | Rang Mahal`;
+          document.title = `${collectionParam} \u00B7 Luxury Indian Couture | Rang Mahal`;
           document.getElementById("cat-banner-tag").textContent = "Exquisite Series";
           document.getElementById("cat-banner-title").innerHTML = `${collectionParam.split(" ")[0]} <em>${collectionParam.split(" ").slice(1).join(" ") || 'Collection'}</em>`;
           document.getElementById("bc-current").textContent = collectionParam;
@@ -325,8 +324,8 @@
         const uniqueFabrics = new Set();
 
         baseFilterList.forEach(p => {
-          // Craft extraction (splitting from "Jaipur · Zardozi · 840 hrs")
-          const parts = p.craft.split("·").map(s => s.trim());
+          // Craft extraction (splitting from "Jaipur &middot; Zardozi &middot; 840 hrs")
+          const parts = p.craft.split("&middot;").map(s => s.trim());
           if (parts.length > 1) {
             uniqueCrafts.add(parts[1]);
           }
@@ -379,7 +378,7 @@
         filteredProducts = baseFilterList.filter(p => {
           // Craft filter check
           if (activeFilters.crafts.length > 0) {
-            const parts = p.craft.split("·").map(s => s.trim());
+            const parts = p.craft.split("&middot;").map(s => s.trim());
             const itemCraft = parts.length > 1 ? parts[1] : "";
             if (!activeFilters.crafts.includes(itemCraft)) return false;
           }
@@ -446,9 +445,9 @@
             badgeHtml = `<span class="pc-badge ${badgeClass}">${p.tag}</span>`;
           }
 
-          const priceFormatted = "?" + p.price.toLocaleString("en-IN");
+          const priceFormatted = "&#8377;" + p.price.toLocaleString("en-IN");
           const priceHtml = p.oldPrice 
-            ? `<span class="pc-price"><del>?${p.oldPrice.toLocaleString("en-IN")}</del>${priceFormatted}</span>`
+            ? `<span class="pc-price"><del>â‚¹${p.oldPrice.toLocaleString("en-IN")}</del>${priceFormatted}</span>`
             : `<span class="pc-price">${priceFormatted}</span>`;
 
           return `
@@ -459,8 +458,8 @@
                     <img src="${p.image}" alt="${p.name}" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1610189352649-ebe0c8cb3d39?w=320&h=420&fit=crop'" />
                   </a>
                   ${badgeHtml}
-                  <button class="pc-wishlist" aria-label="Wishlist">?</button>
-                  <div class="pc-quick" onclick="addToCart('${p.id}', '${p.name.replace(/'/g, "\\'")}', ${p.price}, '${p.image}')">Add to Bag ?</div>
+                  <button class="pc-wishlist" aria-label="Wishlist">&#9825;</button>
+                  <div class="pc-quick" onclick="addToCart('${p.id}', '${p.name.replace(/'/g, "\\'")}', ${p.price}, '${p.image}')">Add to Bag &rarr;</div>
                 </div>
                 <div class="pc-info">
                   <p class="pc-cat">${p.categoryLabel}</p>

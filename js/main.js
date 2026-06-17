@@ -21,6 +21,13 @@ function initCursor() {
   const cr = document.getElementById("cring");
   if (!cd || !cr) return;
 
+  // Deactivate on mobile / touch screens
+  if (window.innerWidth <= 768 || !window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
+    cd.style.display = "none";
+    cr.style.display = "none";
+    return;
+  }
+
   let mx = 0, my = 0, rx = 0, ry = 0;
 
   document.addEventListener("mousemove", (e) => {
@@ -207,7 +214,7 @@ function initSearch() {
         <div class="sor-info">
           <p class="sor-name">${p.name}</p>
           <span class="sor-cat">${p.categoryLabel}</span>
-          <p class="sor-price">₹${p.price.toLocaleString("en-IN")}</p>
+          <p class="sor-price">\u20B9${p.price.toLocaleString("en-IN")}</p>
         </div>
       </a>
     `).join("");
@@ -258,7 +265,7 @@ function updateCartUI() {
 
   if (count === 0) {
     container.innerHTML = `<p style="font-size:0.8rem;color:var(--muted);padding:3rem 0;text-align:center">Your bag is empty</p>`;
-    if (totalSpan) totalSpan.textContent = "₹0";
+    if (totalSpan) totalSpan.textContent = "\u20B90";
     localStorage.setItem("rang_mahal_cart", JSON.stringify(cartData));
     return;
   }
@@ -276,14 +283,14 @@ function updateCartUI() {
       <div class="cdi-info">
         <p class="cdi-name">${item.name}</p>
         <p class="cdi-meta">Bespoke Fit · Silk</p>
-        <p class="cdi-price">₹${item.price.toLocaleString("en-IN")}</p>
+        <p class="cdi-price">\u20B9${item.price.toLocaleString("en-IN")}</p>
         <button class="cdi-rm" onclick="removeCartItem('${id}')">Remove</button>
       </div>
     `;
     container.appendChild(div);
   });
 
-  if (totalSpan) totalSpan.textContent = "₹" + cartTotal.toLocaleString("en-IN");
+  if (totalSpan) totalSpan.textContent = "\u20B9" + cartTotal.toLocaleString("en-IN");
   localStorage.setItem("rang_mahal_cart", JSON.stringify(cartData));
   
   if (window.updateCursorHovers) window.updateCursorHovers();
@@ -643,9 +650,9 @@ function initProductGrid() {
     }
 
     // Price mapping
-    const priceFormatted = "₹" + p.price.toLocaleString("en-IN");
+    const priceFormatted = "\u20B9" + p.price.toLocaleString("en-IN");
     const priceHtml = p.oldPrice 
-      ? `<span class="pc-price"><del>₹${p.oldPrice.toLocaleString("en-IN")}</del>${priceFormatted}</span>`
+      ? `<span class="pc-price"><del>\u20B9${p.oldPrice.toLocaleString("en-IN")}</del>${priceFormatted}</span>`
       : `<span class="pc-price">${priceFormatted}</span>`;
 
     return `

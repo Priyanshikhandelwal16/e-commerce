@@ -4157,6 +4157,9 @@ footer {
 }
 
 @media (max-width: 600px) {
+  .prod-key-features {
+    grid-template-columns: 1fr !important;
+  }
   .product-grid,
   .cat-product-grid {
     grid-template-columns: 1fr !important;
