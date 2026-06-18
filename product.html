@@ -476,11 +476,12 @@
         }
       }
 
-      // Hover Zoom Integration
+      // Hover Zoom Integration for Desktop / Touch Zoom for Mobile
       const mainImgContainer = document.querySelector(".prod-main-img");
       const mainImg = document.getElementById("main-image");
 
       if (mainImgContainer && mainImg) {
+        // Desktop Hover Events
         mainImgContainer.addEventListener("mouseenter", () => {
           mainImg.style.transform = "scale(1.75)";
         });
@@ -530,51 +531,89 @@
           });
         }
 
-        // Swipe & Tap Gestures on Main Image Container for Mobile
+        // Swipe & Tap & Touch Zoom Gestures on Main Image Container for Mobile
         let mainTouchStartX = 0;
         let mainTouchStartY = 0;
         let mainTouchEndX = 0;
         let mainTouchEndY = 0;
 
         mainImgContainer.addEventListener("touchstart", (e) => {
-          mainTouchStartX = e.changedTouches[0].screenX;
-          mainTouchStartY = e.changedTouches[0].screenY;
+          if (e.touches.length === 1) {
+            mainTouchStartX = e.touches[0].screenX;
+            mainTouchStartY = e.touches[0].screenY;
+
+            // Zoom in on touch start
+            mainImg.style.transform = "scale(1.75)";
+            
+            const rect = mainImgContainer.getBoundingClientRect();
+            const clientX = e.touches[0].clientX;
+            const clientY = e.touches[0].clientY;
+            const x = ((clientX - rect.left) / rect.width) * 100;
+            const y = ((clientY - rect.top) / rect.height) * 100;
+            mainImg.style.transformOrigin = `${x}% ${y}%`;
+          }
         }, { passive: true });
 
-        mainImgContainer.addEventListener("touchend", (e) => {
-          mainTouchEndX = e.changedTouches[0].screenX;
-          mainTouchEndY = e.changedTouches[0].screenY;
-          
-          const diffX = Math.abs(mainTouchEndX - mainTouchStartX);
-          const diffY = Math.abs(mainTouchEndY - mainTouchStartY);
-          
-          // Check if it's a simple touch tap (minimal movement)
-          if (diffX < 10 && diffY < 10) {
-            // Tap on zoom icon or main image container (excluding arrows) triggers lightbox
-            if (!e.target.closest(".main-gallery-arrow")) {
-              e.stopPropagation();
-              openLightbox(currentImageIndex);
-            }
-            return;
-          }
+        mainImgContainer.addEventListener("touchmove", (e) => {
+          if (e.touches.length === 1) {
+            // Prevent page scrolling while dragging finger to explore details
+            e.preventDefault();
 
-          // Otherwise handle swipe gestures
-          const threshold = 50;
-          const files = window.galleryFiles || [];
-          if (!files.length) return;
-          
-          // Only trigger horizontal swipes if deltaX > deltaY
-          if (diffX > diffY) {
-            if (mainTouchEndX < mainTouchStartX - threshold) {
-              // Swipe Left -> Next Image
-              let nextIdx = currentImageIndex + 1;
-              if (nextIdx >= files.length) nextIdx = 0;
-              switchGalleryImage(null, files[nextIdx], nextIdx);
-            } else if (mainTouchEndX > mainTouchStartX + threshold) {
-              // Swipe Right -> Prev Image
-              let prevIdx = currentImageIndex - 1;
-              if (prevIdx < 0) prevIdx = files.length - 1;
-              switchGalleryImage(null, files[prevIdx], prevIdx);
+            const rect = mainImgContainer.getBoundingClientRect();
+            const clientX = e.touches[0].clientX;
+            const clientY = e.touches[0].clientY;
+            
+            let x = ((clientX - rect.left) / rect.width) * 100;
+            let y = ((clientY - rect.top) / rect.height) * 100;
+            
+            // Clamp values
+            if (x < 0) x = 0;
+            if (x > 100) x = 100;
+            if (y < 0) y = 0;
+            if (y > 100) y = 100;
+
+            mainImg.style.transformOrigin = `${x}% ${y}%`;
+          }
+        }, { passive: false }); // Must be passive: false to block page scrolling during zoom exploration
+
+        mainImgContainer.addEventListener("touchend", (e) => {
+          // Reset zoom
+          mainImg.style.transform = "scale(1.0)";
+          mainImg.style.transformOrigin = "center top";
+
+          if (e.changedTouches.length > 0) {
+            mainTouchEndX = e.changedTouches[0].screenX;
+            mainTouchEndY = e.changedTouches[0].screenY;
+            
+            const diffX = Math.abs(mainTouchEndX - mainTouchStartX);
+            const diffY = Math.abs(mainTouchEndY - mainTouchStartY);
+            
+            // Check if it's a simple touch tap (minimal movement)
+            if (diffX < 10 && diffY < 10) {
+              if (!e.target.closest(".main-gallery-arrow")) {
+                e.stopPropagation();
+                openLightbox(currentImageIndex);
+              }
+              return;
+            }
+
+            // Swipe navigation
+            const threshold = 50;
+            const files = window.galleryFiles || [];
+            if (!files.length) return;
+            
+            if (diffX > diffY) {
+              if (mainTouchEndX < mainTouchStartX - threshold) {
+                // Swipe Left -> Next Image
+                let nextIdx = currentImageIndex + 1;
+                if (nextIdx >= files.length) nextIdx = 0;
+                switchGalleryImage(null, files[nextIdx], nextIdx);
+              } else if (mainTouchEndX > mainTouchStartX + threshold) {
+                // Swipe Right -> Prev Image
+                let prevIdx = currentImageIndex - 1;
+                if (prevIdx < 0) prevIdx = files.length - 1;
+                switchGalleryImage(null, files[prevIdx], prevIdx);
+              }
             }
           }
         }, { passive: true });
