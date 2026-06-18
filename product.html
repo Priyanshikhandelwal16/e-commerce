@@ -499,7 +499,7 @@
 
         // Lightbox Open Trigger on Main Image Click (except arrows)
         mainImgContainer.addEventListener("click", (e) => {
-          if (!e.target.classList.contains("main-gallery-arrow")) {
+          if (!e.target.closest(".main-gallery-arrow")) {
             openLightbox(currentImageIndex);
           }
         });
@@ -530,28 +530,52 @@
           });
         }
 
-        // Swipe Gestures on Main Image Container
+        // Swipe & Tap Gestures on Main Image Container for Mobile
         let mainTouchStartX = 0;
+        let mainTouchStartY = 0;
         let mainTouchEndX = 0;
+        let mainTouchEndY = 0;
+
         mainImgContainer.addEventListener("touchstart", (e) => {
           mainTouchStartX = e.changedTouches[0].screenX;
+          mainTouchStartY = e.changedTouches[0].screenY;
         }, { passive: true });
 
         mainImgContainer.addEventListener("touchend", (e) => {
           mainTouchEndX = e.changedTouches[0].screenX;
+          mainTouchEndY = e.changedTouches[0].screenY;
+          
+          const diffX = Math.abs(mainTouchEndX - mainTouchStartX);
+          const diffY = Math.abs(mainTouchEndY - mainTouchStartY);
+          
+          // Check if it's a simple touch tap (minimal movement)
+          if (diffX < 10 && diffY < 10) {
+            // Tap on zoom icon or main image container (excluding arrows) triggers lightbox
+            if (!e.target.closest(".main-gallery-arrow")) {
+              e.stopPropagation();
+              openLightbox(currentImageIndex);
+            }
+            return;
+          }
+
+          // Otherwise handle swipe gestures
           const threshold = 50;
           const files = window.galleryFiles || [];
           if (!files.length) return;
-          if (mainTouchEndX < mainTouchStartX - threshold) {
-            // Swipe Left -> Next Image
-            let nextIdx = currentImageIndex + 1;
-            if (nextIdx >= files.length) nextIdx = 0;
-            switchGalleryImage(null, files[nextIdx], nextIdx);
-          } else if (mainTouchEndX > mainTouchStartX + threshold) {
-            // Swipe Right -> Prev Image
-            let prevIdx = currentImageIndex - 1;
-            if (prevIdx < 0) prevIdx = files.length - 1;
-            switchGalleryImage(null, files[prevIdx], prevIdx);
+          
+          // Only trigger horizontal swipes if deltaX > deltaY
+          if (diffX > diffY) {
+            if (mainTouchEndX < mainTouchStartX - threshold) {
+              // Swipe Left -> Next Image
+              let nextIdx = currentImageIndex + 1;
+              if (nextIdx >= files.length) nextIdx = 0;
+              switchGalleryImage(null, files[nextIdx], nextIdx);
+            } else if (mainTouchEndX > mainTouchStartX + threshold) {
+              // Swipe Right -> Prev Image
+              let prevIdx = currentImageIndex - 1;
+              if (prevIdx < 0) prevIdx = files.length - 1;
+              switchGalleryImage(null, files[prevIdx], prevIdx);
+            }
           }
         }, { passive: true });
       }

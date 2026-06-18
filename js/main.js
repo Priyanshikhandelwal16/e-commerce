@@ -71,20 +71,20 @@ function initPreloader() {
   const pct = document.getElementById("plp");
 
   if (window.gsap) {
-    gsap.to("#plm", { opacity: 1, duration: 0.2, delay: 0.05 });
+    gsap.to("#plm", { opacity: 1, duration: 0.4, delay: 0.1 });
     gsap.to("#pll", {
       opacity: 1,
       y: 0,
-      duration: 0.3,
-      delay: 0.1,
+      duration: 0.6,
+      delay: 0.2,
       ease: "power3.out",
     });
-    gsap.to("#plt", { opacity: 1, duration: 0.2, delay: 0.15 });
+    gsap.to("#plt", { opacity: 1, duration: 0.4, delay: 0.4 });
   }
 
   let p = 0;
   const iv = setInterval(() => {
-    p += Math.random() * 25 + 15;
+    p += Math.random() * 3.5 + 1.5;
     if (p > 100) p = 100;
     if (fill) fill.style.width = p + "%";
     if (pct) pct.textContent = Math.floor(p) + "%";
@@ -95,7 +95,7 @@ function initPreloader() {
         if (window.gsap) {
           gsap.to(pl, {
             opacity: 0,
-            duration: 0.3,
+            duration: 0.5,
             onComplete: () => {
               pl.style.display = "none";
               // Trigger boot in other scripts if they exist
@@ -104,11 +104,11 @@ function initPreloader() {
           });
         } else {
           pl.style.opacity = 0;
-          setTimeout(() => pl.style.display = "none", 300);
+          setTimeout(() => pl.style.display = "none", 500);
         }
-      }, 100);
+      }, 200);
     }
-  }, 30);
+  }, 35);
 }
 
 /* ════════════════════════════════

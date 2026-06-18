@@ -2059,7 +2059,9 @@ footer {
   align-items: center;
   justify-content: center;
   color: var(--maroon);
-  pointer-events: none;
+  cursor: pointer;
+  pointer-events: auto;
+  z-index: 10;
   transition: transform 0.3s, background 0.3s, color 0.3s;
 }
 
