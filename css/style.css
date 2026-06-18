@@ -4291,4 +4291,30 @@ footer {
   }
 }
 
+/* Loader Mobile Responsiveness */
+@media (max-width: 768px) {
+  #preloader {
+    padding: 1.5rem !important;
+    gap: 1.1rem !important;
+    text-align: center !important;
+  }
+  .pl-motif {
+    width: 52px !important;
+    height: 52px !important;
+  }
+  .pl-logo {
+    font-size: 1.6rem !important;
+    letter-spacing: 0.16em !important;
+  }
+  .pl-tagline {
+    font-size: 0.55rem !important;
+    letter-spacing: 0.16em !important;
+    line-height: 1.5 !important;
+    padding: 0 1rem !important;
+  }
+  .pl-track {
+    width: 140px !important;
+  }
+}
+
 
